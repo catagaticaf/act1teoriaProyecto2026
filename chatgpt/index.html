@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludoteca - Juegos de mesa</title>
+    <link rel="stylesheet" href="estilosIA.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+        <div class="contenedor header-contenido">
+
+            <a href="index.html" class="logo">
+                <span class="logo-icono">🎲</span>
+                <span>Ludoteca</span>
+            </a>
+
+            <nav class="navegacion">
+                <a href="index.html" class="activo">Juegos</a>
+                <a href="nosotros.html">Quiénes somos</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- ================= PRESENTACIÓN ================= -->
+
+    <main>
+
+        <section class="hero">
+            <div class="contenedor hero-contenido">
+
+                <div class="hero-texto">
+                    <p class="etiqueta">NUESTRA COLECCIÓN</p>
+
+                    <h1>
+                        Encontrá tu próximo
+                        <span>juego favorito</span>
+                    </h1>
+
+                    <p class="hero-descripcion">
+                        Explorá nuestra selección de juegos de mesa,
+                        descubrí nuevas experiencias y consultá sus
+                        reglamentos antes de jugar.
+                    </p>
+                </div>
+
+                <div class="hero-dado">
+                    🎲
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= CATÁLOGO ================= -->
+
+        <section class="catalogo" id="juegos">
+
+            <div class="contenedor">
+
+                <div class="seccion-titulo">
+                    <p class="etiqueta">CATÁLOGO</p>
+                    <h2>Elegí una categoría</h2>
+                    <p>
+                        Seleccioná el tipo de juego que querés explorar.
+                    </p>
+                </div>
+
+
+                <!-- RADIO BUTTONS -->
+
+                <input type="radio" name="categoria" id="estrategia" checked>
+                <input type="radio" name="categoria" id="cartas">
+                <input type="radio" name="categoria" id="familiares">
+
+
+                <!-- BOTONES DE CATEGORÍA -->
+
+                <div class="categorias">
+
+                    <label for="estrategia" class="categoria">
+                        <span class="categoria-icono">♟</span>
+                        <span>
+                            <strong>Estrategia</strong>
+                            <small>Planificá y conquistá</small>
+                        </span>
+                    </label>
+
+                    <label for="cartas" class="categoria">
+                        <span class="categoria-icono">🃏</span>
+                        <span>
+                            <strong>Cartas</strong>
+                            <small>Jugá tu mejor carta</small>
+                        </span>
+                    </label>
+
+                    <label for="familiares" class="categoria">
+                        <span class="categoria-icono">👨‍👩‍👧</span>
+                        <span>
+                            <strong>Familiares</strong>
+                            <small>Diversión para todos</small>
+                        </span>
+                    </label>
+
+                </div>
+
+
+                <!-- ================= ESTRATEGIA ================= -->
+
+                <div class="juegos juegos-estrategia">
+
+                    <article class="juego-card">
+
+                        <div class="juego-imagen">
+                            <img src="imagenes/catan.png"
+                                 alt="Portada del juego Catan">
+                        </div>
+
+                        <div class="juego-contenido">
+
+                            <span class="juego-categoria">
+                                Estrategia
+                            </span>
+
+                            <h3>Catan</h3>
+
+                            <p>
+                                En Catan, los jugadores deben desarrollar
+                                sus territorios, conseguir recursos y
+                                negociar con otros participantes para
+                                construir caminos, poblados y ciudades.
+                            </p>
+
+                            <div class="juego-info">
+                                <span>👥 3-4 jugadores</span>
+                                <span>⏱ 60-90 min</span>
+                            </div>
+
+                            <a href="reglamentos/catan.pdf"
+                               class="boton-reglamento"
+                               target="_blank">
+                                Ver reglamento →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="juego-card">
+
+                        <div class="juego-imagen">
+                            <img src="imagenes/carcassonne.png"
+                                 alt="Portada del juego Carcassonne">
+                        </div>
+
+                        <div class="juego-contenido">
+
+                            <span class="juego-categoria">
+                                Estrategia
+                            </span>
+
+                            <h3>Carcassonne</h3>
+
+                            <p>
+                                Construí un paisaje medieval colocando
+                                losetas y ocupando ciudades, caminos,
+                                monasterios y campos. Cada decisión
+                                puede cambiar el resultado de la partida.
+                            </p>
+
+                            <div class="juego-info">
+                                <span>👥 2-5 jugadores</span>
+                                <span>⏱ 35-45 min</span>
+                            </div>
+
+                            <a href="reglamentos/carcassonne.pdf"
+                               class="boton-reglamento"
+                               target="_blank">
+                                Ver reglamento →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- ================= CARTAS ================= -->
+
+                <div class="juegos juegos-cartas">
+
+                    <article class="juego-card">
+
+                        <div class="juego-imagen">
+                            <img src="imagenes/uno.png"
+                                 alt="Portada del juego UNO">
+                        </div>
+
+                        <div class="juego-contenido">
+
+                            <span class="juego-categoria">
+                                Cartas
+                            </span>
+
+                            <h3>UNO</h3>
+
+                            <p>
+                                Un clásico juego de cartas donde el
+                                objetivo es quedarse sin cartas antes
+                                que los demás. Usá cartas especiales,
+                                cambiá el color y sorprendé a tus rivales.
+                            </p>
+
+                            <div class="juego-info">
+                                <span>👥 2-10 jugadores</span>
+                                <span>⏱ 15-20 min</span>
+                            </div>
+
+                            <a href="reglamentos/uno.pdf"
+                               class="boton-reglamento"
+                               target="_blank">
+                                Ver reglamento →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="juego-card">
+
+                        <div class="juego-imagen">
+                            <img src="imagenes/virus.png"
+                                 alt="Portada del juego Virus!">
+                        </div>
+
+                        <div class="juego-contenido">
+
+                            <span class="juego-categoria">
+                                Cartas
+                            </span>
+
+                            <h3>Virus!</h3>
+
+                            <p>
+                                Conseguí un cuerpo sano mientras intentás
+                                infectar a tus rivales. Utilizá virus,
+                                medicinas y tratamientos para completar
+                                tus órganos antes que los demás.
+                            </p>
+
+                            <div class="juego-info">
+                                <span>👥 2-6 jugadores</span>
+                                <span>⏱ 20 min</span>
+                            </div>
+
+                            <a href="reglamentos/virus.pdf"
+                               class="boton-reglamento"
+                               target="_blank">
+                                Ver reglamento →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- ================= FAMILIARES ================= -->
+
+                <div class="juegos juegos-familiares">
+
+                    <article class="juego-card">
+
+                        <div class="juego-imagen">
+                            <img src="imagenes/dixit.png"
+                                 alt="Portada del juego Dixit">
+                        </div>
+
+                        <div class="juego-contenido">
+
+                            <span class="juego-categoria">
+                                Familiares
+                            </span>
+
+                            <h3>Dixit</h3>
+
+                            <p>
+                                Un juego de imaginación y creatividad.
+                                Cada jugador utiliza imágenes para
+                                representar una idea y los demás deben
+                                descubrir cuál fue la carta elegida.
+                            </p>
+
+                            <div class="juego-info">
+                                <span>👥 3-8 jugadores</span>
+                                <span>⏱ 30 min</span>
+                            </div>
+
+                            <a href="reglamentos/dixit.pdf"
+                               class="boton-reglamento"
+                               target="_blank">
+                                Ver reglamento →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="juego-card">
+
+                        <div class="juego-imagen">
+                            <img src="imagenes/clue.png"
+                                 alt="Portada del juego Clue">
+                        </div>
+
+                        <div class="juego-contenido">
+
+                            <span class="juego-categoria">
+                                Familiares
+                            </span>
+
+                            <h3>Clue</h3>
+
+                            <p>
+                                Resolvé un misterioso asesinato utilizando
+                                las pistas disponibles. Deducí quién fue
+                                el responsable, dónde ocurrió y qué arma
+                                se utilizó.
+                            </p>
+
+                            <div class="juego-info">
+                                <span>👥 3-6 jugadores</span>
+                                <span>⏱ 45 min</span>
+                            </div>
+
+                            <a href="reglamentos/clue.pdf"
+                               class="boton-reglamento"
+                               target="_blank">
+                                Ver reglamento →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="contenedor footer-contenido">
+
+            <div>
+                <strong>🎲 Ludoteca</strong>
+                <p>
+                    Un espacio para descubrir y compartir
+                    juegos de mesa.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="nosotros.html">Quiénes somos</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Ludoteca — Proyecto de Software
+        </div>
+
+    </footer>
+
+</body>
+</html>
