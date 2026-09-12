@@ -1,0 +1,745 @@
+/* =========================================================
+   ESTILOS IA — Ludoteca "Tablero Abierto"
+   Reseñas de juegos de mesa — Proyecto de Software
+   ========================================================= */
+
+/* ---------- 1. Variables globales ---------- */
+:root {
+  --color-primario: #0f766e;
+  --color-primario-oscuro: #0b5d56;
+  --color-primario-claro: #14b8a6;
+  --color-acento: #f59e0b;
+  --color-acento-oscuro: #b45309;
+  --color-texto: #1f2937;
+  --color-texto-suave: #4b5563;
+  --color-fondo: #f7f7f2;
+  --color-superficie: #ffffff;
+  --color-borde: #e5e7eb;
+  --color-cartas: #7c2d12;
+  --color-familiares: #a21caf;
+  --color-estrategia: #0f766e;
+
+  --radio-borde: 14px;
+  --sombra: 0 4px 14px rgba(15, 23, 42, 0.08);
+  --sombra-hover: 0 10px 24px rgba(15, 23, 42, 0.14);
+  --fuente: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --transicion: 0.25s ease;
+}
+
+/* ---------- 2. Reset básico ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente);
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  line-height: 1.55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4 {
+  color: var(--color-texto);
+  line-height: 1.25;
+}
+
+/* Accesibilidad: foco visible para navegación por teclado */
+a:focus-visible,
+button:focus-visible,
+label:focus-within,
+input:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+/* ---------- 3. Header / Navegación ---------- */
+.site-header {
+  background-color: var(--color-primario-oscuro);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.logo .icono {
+  font-size: 1.6rem;
+}
+
+/* Checkbox oculto para el menú hamburguesa (sin JS) */
+.menu-toggle {
+  display: none;
+}
+
+.menu-icono {
+  display: none;
+  font-size: 1.6rem;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+.menu-icono:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-principal ul {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-principal a {
+  display: inline-block;
+  color: #e6f4f1;
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  transition: background var(--transicion), color var(--transicion);
+}
+
+.nav-principal a:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.nav-principal a.activo {
+  background: var(--color-acento);
+  color: #3a2205;
+}
+
+/* ---------- 4. Hero / encabezado de sección ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%);
+  color: #ffffff;
+  padding: 3rem 1.5rem 2.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  color: #ffffff;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 0.75rem;
+}
+
+.hero p {
+  color: #dff3ef;
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+.pagina-header {
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%);
+  color: #fff;
+  padding: 2.75rem 1.5rem;
+  text-align: center;
+}
+
+.pagina-header h1 {
+  color: #fff;
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+}
+
+.pagina-header p {
+  color: #dff3ef;
+  margin-top: 0.5rem;
+}
+
+/* ---------- 5. Contenido principal ---------- */
+main {
+  flex: 1;
+}
+
+.contenedor {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+/* ---------- 6. Selector de categorías (100% CSS, sin JS) ---------- */
+.selector-categorias {
+  max-width: 1180px;
+  margin: -1.75rem auto 0;
+  padding: 0 1.5rem 3rem;
+}
+
+/* Ocultamos los radios reales, se manejan mediante las etiquetas (tabs) */
+.selector-categorias > input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  background: var(--color-superficie);
+  padding: 0.75rem;
+  border-radius: 999px;
+  box-shadow: var(--sombra);
+  max-width: fit-content;
+  margin: 0 auto 2rem;
+}
+
+.tabs label {
+  cursor: pointer;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--color-texto-suave);
+  transition: background var(--transicion), color var(--transicion), transform var(--transicion);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.tabs label:hover {
+  background: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+/* Estado activo de cada tab según el radio marcado */
+#cat-estrategia:checked ~ .tabs label[for="cat-estrategia"],
+#cat-cartas:checked ~ .tabs label[for="cat-cartas"],
+#cat-familiares:checked ~ .tabs label[for="cat-familiares"] {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+#cat-estrategia:checked ~ .tabs label[for="cat-estrategia"] {
+  background: var(--color-estrategia);
+}
+#cat-cartas:checked ~ .tabs label[for="cat-cartas"] {
+  background: var(--color-cartas);
+}
+#cat-familiares:checked ~ .tabs label[for="cat-familiares"] {
+  background: var(--color-familiares);
+}
+
+/* Paneles: ocultos por defecto, se muestra solo el correspondiente al radio activo */
+.panel {
+  display: none;
+  animation: aparecer 0.35s ease;
+}
+
+#cat-estrategia:checked ~ .paneles #panel-estrategia,
+#cat-cartas:checked ~ .paneles #panel-cartas,
+#cat-familiares:checked ~ .paneles #panel-familiares {
+  display: block;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.panel-encabezado {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.panel-encabezado h2 {
+  font-size: 1.5rem;
+}
+
+.panel-encabezado .franja {
+  width: 46px;
+  height: 6px;
+  border-radius: 999px;
+}
+
+#panel-estrategia .franja { background: var(--color-estrategia); }
+#panel-cartas .franja { background: var(--color-cartas); }
+#panel-familiares .franja { background: var(--color-familiares); }
+
+.panel-encabezado .contador {
+  color: var(--color-texto-suave);
+  font-size: 0.95rem;
+}
+
+/* ---------- 7. Mosaico de tarjetas de juegos ---------- */
+.juegos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.juego-card {
+  background: var(--color-superficie);
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transicion), box-shadow var(--transicion);
+  border: 1px solid var(--color-borde);
+}
+
+.juego-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-hover);
+}
+
+.juego-imagen-wrap {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--color-borde);
+}
+
+.juego-imagen-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.juego-card:hover .juego-imagen-wrap img {
+  transform: scale(1.04);
+}
+
+.juego-info {
+  padding: 1.15rem 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+.juego-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.juego-header h3 {
+  font-size: 1.2rem;
+}
+
+.rating {
+  color: var(--color-acento-oscuro);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.juego-meta {
+  font-size: 0.88rem;
+  color: var(--color-texto-suave);
+  font-weight: 600;
+}
+
+.juego-etiqueta {
+  display: inline-block;
+  width: fit-content;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  color: #ffffff;
+}
+
+#panel-estrategia .juego-etiqueta { background: var(--color-estrategia); }
+#panel-cartas .juego-etiqueta { background: var(--color-cartas); }
+#panel-familiares .juego-etiqueta { background: var(--color-familiares); }
+
+.juego-resena {
+  font-size: 0.95rem;
+  color: var(--color-texto);
+  flex: 1;
+}
+
+.btn-descarga {
+  margin-top: 0.4rem;
+  align-self: flex-start;
+  background: var(--color-primario);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background var(--transicion);
+}
+
+.btn-descarga:hover {
+  background: var(--color-primario-oscuro);
+}
+
+/* ---------- 8. Sección "Quiénes somos" ---------- */
+.tarjeta-info {
+  background: var(--color-superficie);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra);
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  border: 1px solid var(--color-borde);
+}
+
+.tarjeta-info h2 {
+  color: var(--color-primario-oscuro);
+  margin-bottom: 0.9rem;
+  font-size: 1.3rem;
+}
+
+.tarjeta-info p + p {
+  margin-top: 0.75rem;
+}
+
+.equipo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.equipo-card {
+  text-align: center;
+  background: var(--color-fondo);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  border: 1px solid var(--color-borde);
+}
+
+.equipo-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--color-primario);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0 auto 0.75rem;
+}
+
+.equipo-card h3 {
+  font-size: 1.02rem;
+}
+
+.equipo-card span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  margin-top: 0.25rem;
+}
+
+.lista-datos {
+  margin-top: 0.75rem;
+}
+
+.lista-datos li {
+  padding: 0.35rem 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lista-datos li strong {
+  min-width: 130px;
+  color: var(--color-primario-oscuro);
+}
+
+/* ---------- 9. Formulario de contacto ---------- */
+.layout-contacto {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.form-card {
+  background: var(--color-superficie);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra);
+  padding: 2rem;
+  border: 1px solid var(--color-borde);
+}
+
+.form-card h2 {
+  margin-bottom: 0.4rem;
+  color: var(--color-primario-oscuro);
+}
+
+.form-card > p {
+  color: var(--color-texto-suave);
+  margin-bottom: 1.4rem;
+  font-size: 0.95rem;
+}
+
+.campo {
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.campo label {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.campo .opcional {
+  font-weight: 400;
+  color: var(--color-texto-suave);
+  font-size: 0.8rem;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  font: inherit;
+  padding: 0.7rem 0.85rem;
+  border: 1.5px solid var(--color-borde);
+  border-radius: 8px;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  transition: border-color var(--transicion), background var(--transicion);
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--color-primario-claro);
+  background: #ffffff;
+}
+
+.campo textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+fieldset {
+  border: 1.5px solid var(--color-borde);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.1rem;
+}
+
+fieldset legend {
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0 0.4rem;
+}
+
+.radio-grupo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+.radio-grupo label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.btn-enviar {
+  border: none;
+  background: var(--color-acento);
+  color: #3a2205;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background var(--transicion), transform var(--transicion);
+  width: 100%;
+}
+
+.btn-enviar:hover {
+  background: var(--color-acento-oscuro);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.aviso-demo {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-texto-suave);
+  background: var(--color-fondo);
+  border-left: 3px solid var(--color-acento);
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+}
+
+.datos-contacto {
+  background: var(--color-primario-oscuro);
+  color: #ffffff;
+  border-radius: var(--radio-borde);
+  padding: 2rem;
+}
+
+.datos-contacto h2 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.datos-contacto ul li {
+  margin-bottom: 1rem;
+  font-size: 0.94rem;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.datos-contacto ul li span.icono {
+  font-size: 1.2rem;
+}
+
+.datos-contacto .horario {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+  color: #dff3ef;
+}
+
+/* ---------- 10. Footer ---------- */
+.site-footer {
+  background: #0b1f1c;
+  color: #cbd5c9;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.88rem;
+  margin-top: auto;
+}
+
+.site-footer a {
+  color: #f0b429;
+  font-weight: 600;
+}
+
+/* ---------- 11. Responsivo ---------- */
+@media (max-width: 900px) {
+  .layout-contacto {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .menu-icono {
+    display: block;
+  }
+
+  .nav-principal {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transicion);
+    order: 3;
+  }
+
+  .header-inner {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle:checked ~ .nav-principal {
+    max-height: 300px;
+  }
+
+  .nav-principal ul {
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.75rem 0 0.5rem;
+  }
+
+  .nav-principal a {
+    display: block;
+  }
+
+  .tabs {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  .tabs label {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    padding: 0.65rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .juegos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .equipo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedor,
+  .selector-categorias {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .form-card,
+  .datos-contacto,
+  .tarjeta-info {
+    padding: 1.4rem;
+  }
+}

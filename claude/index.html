@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de juegos — Ludoteca Tablero Abierto</title>
+  <meta name="description" content="Catálogo de reseñas de juegos de mesa de la Ludoteca Tablero Abierto, organizado por categorías: estrategia, cartas y familiares.">
+  <link rel="stylesheet" href="estilosIA.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><span class="icono">🎲</span> Tablero Abierto</a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icono" aria-label="Abrir menú de navegación">☰</label>
+
+      <nav class="nav-principal" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html" class="activo" aria-current="page">Catálogo</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Catálogo de juegos de mesa</h1>
+      <p>Elegí una categoría para descubrir nuestras reseñas, ver la portada de cada juego y descargar su reglamento en PDF.</p>
+    </section>
+
+    <!-- ================= SELECTOR DE CATEGORÍAS (100% HTML/CSS, sin scripts) ================= -->
+    <section class="selector-categorias" aria-label="Selector de categoría de juegos">
+
+      <input type="radio" name="categoria" id="cat-estrategia" checked>
+      <input type="radio" name="categoria" id="cat-cartas">
+      <input type="radio" name="categoria" id="cat-familiares">
+
+      <div class="tabs" role="tablist" aria-label="Categorías de juegos">
+        <label for="cat-estrategia">🧠 Estrategia</label>
+        <label for="cat-cartas">🃏 Cartas</label>
+        <label for="cat-familiares">🎉 Familiares</label>
+      </div>
+
+      <div class="paneles">
+
+        <!-- ---------- PANEL: ESTRATEGIA ---------- -->
+        <section id="panel-estrategia" class="panel">
+          <div class="panel-encabezado">
+            <span class="franja" aria-hidden="true"></span>
+            <h2>Juegos de estrategia</h2>
+            <span class="contador">2 juegos reseñados</span>
+          </div>
+
+          <div class="juegos-grid">
+
+            <article class="juego-card">
+              <div class="juego-imagen-wrap">
+                <img src="imagenes/catan.png" alt="Portada del juego Catan, ilustración con hexágono dorado sobre fondo verde" loading="lazy">
+              </div>
+              <div class="juego-info">
+                <span class="juego-etiqueta">Estrategia</span>
+                <div class="juego-header">
+                  <h3>Catan</h3>
+                  <span class="rating" aria-label="Calificación 4,5 de 5 estrellas">★★★★☆</span>
+                </div>
+                <p class="juego-meta">👥 3 a 4 jugadores · ⏱ 60–90 min</p>
+                <p class="juego-resena">Un clásico imprescindible de la ludoteca. La gestión de recursos y el comercio entre jugadores, sobre un mapa que cambia en cada partida, lo convierten en una experiencia siempre distinta. Ideal para quienes buscan un desafío estratégico sin resultar abrumador para principiantes.</p>
+                <a class="btn-descarga" href="reglamentos/catan.pdf" download>📄 Descargar reglamento (PDF)</a>
+              </div>
+            </article>
+
+            <article class="juego-card">
+              <div class="juego-imagen-wrap">
+                <img src="imagenes/carcassonne.png" alt="Portada del juego Carcassonne, ilustración con hexágono dorado sobre fondo verde oliva" loading="lazy">
+              </div>
+              <div class="juego-info">
+                <span class="juego-etiqueta">Estrategia</span>
+                <div class="juego-header">
+                  <h3>Carcassonne</h3>
+                  <span class="rating" aria-label="Calificación 4,5 de 5 estrellas">★★★★☆</span>
+                </div>
+                <p class="juego-meta">👥 2 a 5 jugadores · ⏱ 35–45 min</p>
+                <p class="juego-resena">Construir el paisaje pieza a pieza nunca deja de ser satisfactorio. Su mecánica simple de colocar fichas esconde decisiones profundas sobre dónde ubicar a los meeples. Partidas ágiles y muy rejugables, perfectas para iniciarse en los juegos de estrategia.</p>
+                <a class="btn-descarga" href="reglamentos/carcassonne.pdf" download>📄 Descargar reglamento (PDF)</a>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- ---------- PANEL: CARTAS ---------- -->
+        <section id="panel-cartas" class="panel">
+          <div class="panel-encabezado">
+            <span class="franja" aria-hidden="true"></span>
+            <h2>Juegos de cartas</h2>
+            <span class="contador">2 juegos reseñados</span>
+          </div>
+
+          <div class="juegos-grid">
+
+            <article class="juego-card">
+              <div class="juego-imagen-wrap">
+                <img src="imagenes/truco.png" alt="Portada del juego Truco, ilustración con naipes sobre fondo rojo" loading="lazy">
+              </div>
+              <div class="juego-info">
+                <span class="juego-etiqueta">Cartas</span>
+                <div class="juego-header">
+                  <h3>Truco</h3>
+                  <span class="rating" aria-label="Calificación 5 de 5 estrellas">★★★★★</span>
+                </div>
+                <p class="juego-meta">👥 2 a 6 jugadores · ⏱ 20–40 min</p>
+                <p class="juego-resena">El juego de cartas más popular en las mesas argentinas. El envite, el bluff y los códigos de gestos entre compañeros generan un clima único de picardía y competencia. Recomendado para grupos con ganas de reírse y discutir cada mano.</p>
+                <a class="btn-descarga" href="reglamentos/truco.pdf" download>📄 Descargar reglamento (PDF)</a>
+              </div>
+            </article>
+
+            <article class="juego-card">
+              <div class="juego-imagen-wrap">
+                <img src="imagenes/uno.png" alt="Portada del juego UNO, ilustración con naipes sobre fondo azul" loading="lazy">
+              </div>
+              <div class="juego-info">
+                <span class="juego-etiqueta">Cartas</span>
+                <div class="juego-header">
+                  <h3>UNO</h3>
+                  <span class="rating" aria-label="Calificación 4 de 5 estrellas">★★★★☆</span>
+                </div>
+                <p class="juego-meta">👥 2 a 10 jugadores · ⏱ 15–30 min</p>
+                <p class="juego-resena">Rápido, colorido y adictivo. Las cartas especiales cambian el rumbo de la partida en segundos, generando alianzas y giros inesperados. Una excelente opción para romper el hielo en grupos numerosos y de todas las edades.</p>
+                <a class="btn-descarga" href="reglamentos/uno.pdf" download>📄 Descargar reglamento (PDF)</a>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- ---------- PANEL: FAMILIARES ---------- -->
+        <section id="panel-familiares" class="panel">
+          <div class="panel-encabezado">
+            <span class="franja" aria-hidden="true"></span>
+            <h2>Juegos familiares</h2>
+            <span class="contador">2 juegos reseñados</span>
+          </div>
+
+          <div class="juegos-grid">
+
+            <article class="juego-card">
+              <div class="juego-imagen-wrap">
+                <img src="imagenes/jenga.png" alt="Portada del juego Jenga, ilustración con dado sobre fondo marrón" loading="lazy">
+              </div>
+              <div class="juego-info">
+                <span class="juego-etiqueta">Familiares</span>
+                <div class="juego-header">
+                  <h3>Jenga</h3>
+                  <span class="rating" aria-label="Calificación 4,5 de 5 estrellas">★★★★☆</span>
+                </div>
+                <p class="juego-meta">👥 2 o más jugadores · ⏱ 10–20 min</p>
+                <p class="juego-resena">Tensión pura en cada turno. La torre de madera pone a prueba el pulso y la concentración de grandes y chicos por igual. Un infaltable para reunir a toda la familia alrededor de la mesa.</p>
+                <a class="btn-descarga" href="reglamentos/jenga.pdf" download>📄 Descargar reglamento (PDF)</a>
+              </div>
+            </article>
+
+            <article class="juego-card">
+              <div class="juego-imagen-wrap">
+                <img src="imagenes/pictionary.png" alt="Portada del juego Pictionary, ilustración con dado sobre fondo rosa y violeta" loading="lazy">
+              </div>
+              <div class="juego-info">
+                <span class="juego-etiqueta">Familiares</span>
+                <div class="juego-header">
+                  <h3>Pictionary</h3>
+                  <span class="rating" aria-label="Calificación 4 de 5 estrellas">★★★★☆</span>
+                </div>
+                <p class="juego-meta">👥 4 o más jugadores, en equipos · ⏱ 30–45 min</p>
+                <p class="juego-resena">Dibujar, adivinar y reír son los tres pilares de este clásico familiar. Fomenta la creatividad y el trabajo en equipo, con partidas llenas de dibujos memorables y confusiones divertidas.</p>
+                <a class="btn-descarga" href="reglamentos/pictionary.pdf" download>📄 Descargar reglamento (PDF)</a>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Ludoteca Tablero Abierto — Proyecto de Software, Licenciatura en Sistemas. Ver <a href="quienes-somos.html">quiénes mantienen el sitio</a>.</p>
+  </footer>
+
+</body>
+</html>
